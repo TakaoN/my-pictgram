@@ -1,6 +1,6 @@
 <%= form_for @comment do |f| %>
   <div class="form-group">
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :user_id, value: @comment.user_id %><!-- ここ修正-->
     <%= f.hidden_field :topic_id, value: @comment.topic_id %>
   </div>
   <%= f.text_area :description, class: 'form-control' %>

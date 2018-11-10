@@ -21,7 +21,7 @@
             </p>
             <h2>Comments</h2>
             <div id=<%= "comment_new#{topic.id}" %>></div>
-            <% if topic.comment_users.include?(current_user) %>
+            <!-- この行を削除-->
               <p class="topic-text">
                 <% topic.comments.each do |comment| %>
                   <p class="topic-text">
@@ -29,7 +29,7 @@
                   </p>
                 <% end %>
               </p>
-            <% end %>
+            <!-- この行を削除-->
           </div>
         </div>
       </div>
