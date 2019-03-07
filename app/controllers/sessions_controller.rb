@@ -5,10 +5,14 @@ class SessionsController < ApplicationController
   def create
     #binding.pry
     #user = User.find_by(email: params[:session][:email])
-    user = User.find_by(email_params) # これは通る
-    if user && user.authenticate(params[:session][:password])
+    #if user && user.authenticate(params[:session][:password])
+    #
+    #user = User.find_by(email_params) # これは通る
     #user = User.find_by(email: email_params) # これはエラーになる
     #if user && user.authenticate(password_params) # これはエラーになる
+    #
+    user = User.find_by(email: email_params[:email]) # 回答例
+    if user && user.authenticate(password_params[:password]) # 回答例
       log_in user
       redirect_to root_path, success: 'ログインに成功しました'
     else
@@ -28,9 +32,9 @@ class SessionsController < ApplicationController
       params.require(:session).permit(:email)
     end
     # これは意味ある？
-    #def password_params
-    #  params.require(:session).permit(:password)
-    #end
+    def password_params
+      params.require(:session).permit(:password)
+    end
 
     def log_in(user)
       session[:user_id] = user.id

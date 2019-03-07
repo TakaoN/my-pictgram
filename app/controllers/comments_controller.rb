@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @comment.topic_id = params[:topic_id]
+    @comment.user_id = session[:user_id] #追加
     respond_to do |format|
       format.html
       format.js
